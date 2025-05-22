@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
-import AdminLogin from "./pages/AdminLogin.jsx";
+import AdminLogin from "./pages/admin/AdminLogin.jsx";
 import Home from "./pages/Home.jsx";
 import BookRoom from "./pages/BookRoom.jsx";
 import Payment from "./pages/Payment.jsx";
