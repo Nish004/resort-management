@@ -62,41 +62,44 @@ function Home() {
   return (
     <div className="belle-vue-home">
       {/* Hero Carousel with CTA on each slide */}
-      <Carousel fade controls={false} interval={5000}>
-        <Carousel.Item>
-          <img className="d-block w-100" src={hero1} alt="Belle Vue Resort" />
-          <Carousel.Caption>
-            <h1>BELLE VUE</h1>
-            <p>Luxury Lakeside Resort & Spa</p>
-            <div className="cta-buttons">
-              <Button variant="outline-light" size="lg" className="me-3">Explore Rooms</Button>
-              <Button variant="light" size="lg">Book Now</Button>
-            </div>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img className="d-block w-100" src={hero2} alt="Resort Pool" />
-          <Carousel.Caption>
-            <h1>UNWIND IN LUXURY</h1>
-            <p>Our award-winning spa awaits you</p>
-            <div className="cta-buttons">
-              <Button variant="outline-light" size="lg" className="me-3">View Packages</Button>
-              <Button variant="light" size="lg">Book Spa</Button>
-            </div>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img className="d-block w-100" src={hero3} alt="Resort Interior" />
-          <Carousel.Caption>
-            <h1>EXCLUSIVE OFFERS</h1>
-            <p>Limited time summer specials</p>
-            <div className="cta-buttons">
-              <Button variant="outline-light" size="lg" className="me-3">View Offers</Button>
-              <Button variant="light" size="lg">Sign Up</Button>
-            </div>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+      {/* <Carousel fade controls={false} interval={5000}> */}
+        <Carousel fade interval={5000} className="hero-carousel">
+  {/* Slide 1 */}
+  <Carousel.Item>
+    <img className="d-block w-100" src={hero1} alt="Belle Vue Resort" />
+    <Carousel.Caption className="hero-caption">
+      <h1>BELLE VUE</h1>
+      <p>Luxury Lakeside Resort & Spa</p>
+      <div className="cta-buttons">
+        <Button variant="outline-light" size="lg">Explore Rooms</Button>
+      </div>
+    </Carousel.Caption>
+  </Carousel.Item>
+
+  {/* Slide 2 */}
+  <Carousel.Item>
+    <img className="d-block w-100" src={hero2} alt="Resort Pool" />
+    <Carousel.Caption className="hero-caption">
+      <h1>UNWIND IN LUXURY</h1>
+      <p>Our award-winning spa awaits you</p>
+      <div className="cta-buttons">
+        <Button variant="outline-light" size="lg">Book Spa</Button>
+      </div>
+    </Carousel.Caption>
+  </Carousel.Item>
+
+  {/* Slide 3 */}
+  <Carousel.Item>
+    <img className="d-block w-100" src={hero3} alt="Resort Interior" />
+    <Carousel.Caption className="hero-caption">
+      <h1>EXCLUSIVE OFFERS</h1>
+      <p>Limited time summer specials</p>
+      <div className="cta-buttons">
+        <Button variant="outline-light" size="lg">View Offers</Button>
+      </div>
+    </Carousel.Caption>
+  </Carousel.Item>
+</Carousel>
 
       {/* Sticky Booking Bar */}
       <div className={`sticky-booking-bar ${stickyBar ? 'visible' : ''}`}>
