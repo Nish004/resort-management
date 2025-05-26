@@ -1,11 +1,8 @@
 'use client';
-
 import { useState } from 'react';
 import { Carousel, Container, Button, Modal } from 'react-bootstrap';
 import Link from 'next/link';
 import Image from 'next/image';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import styles from './page.module.css';
 
 // Image paths (now in public/assets/)
@@ -60,45 +57,88 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.belleVueHome}>
       {/* Hero Carousel */}
-      <div className={styles.carouselContainer}>
-        <Carousel fade interval={5000} controls indicators className={styles.carousel}>
-          {[hero1, hero2, hero3].map((img, index) => (
-            <Carousel.Item key={index} className={styles.carouselItem}>
-              <div className={styles.imageWrapper}>
-                <Image
-                  src={img}
-                  alt={`Slide ${index + 1}`}
-                  fill
-                  className={styles.carouselImage}
-                  priority={index === 0}
-                  sizes="100vw"
-                />
+      <div className={styles.fullWidthCarouselContainer}>
+        <Carousel fade interval={5000} controls indicators className={styles.heroCarousel}>
+          <Carousel.Item className={styles.carouselItemFull}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src={hero1}
+                alt="Belle Vue Resort"
+                fill
+                className={styles.carouselImage}
+                priority
+              />
+            </div>
+            <Carousel.Caption className={styles.heroCaption}>
+              <h1>BELLE VUE</h1>
+              <p>Luxury Lakeside Resort & Spa</p>
+              <div className={styles.ctaButtons}>
+                <Button 
+                  as={Link} 
+                  href="/book" 
+                  variant="outline-light" 
+                  size="lg"
+                  className={`me-3 ${styles.ctaButton}`}
+                >
+                  Book Now
+                </Button>
               </div>
-              <Carousel.Caption className={styles.caption}>
-                <h1 className={styles.captionTitle}>
-                  {index === 0 ? 'BELLE VUE' : 
-                   index === 1 ? 'UNWIND IN LUXURY' : 'EXCLUSIVE OFFERS'}
-                </h1>
-                <p className={styles.captionText}>
-                  {index === 0 ? 'Luxury Lakeside Resort & Spa' : 
-                   index === 1 ? 'Our award-winning spa awaits you' : 'Limited time summer specials'}
-                </p>
-                <div className={styles.ctaButtons}>
-                  <Button 
-                    as={Link} 
-                    href="/book" 
-                    variant="outline-light" 
-                    size="lg"
-                    className={`me-3 ${styles.ctaButton}`}
-                  >
-                    {index === 0 ? 'Book Now' : index === 1 ? 'Book Spa' : 'View Offers'}
-                  </Button>
-                </div>
-              </Carousel.Caption>
-            </Carousel.Item>
-          ))}
+            </Carousel.Caption>
+          </Carousel.Item>
+
+          <Carousel.Item className={styles.carouselItemFull}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src={hero2}
+                alt="Resort Pool"
+                fill
+                className={styles.carouselImage}
+              />
+            </div>
+            <Carousel.Caption className={styles.heroCaption}>
+              <h1>UNWIND IN LUXURY</h1>
+              <p>Our award-winning spa awaits you</p>
+              <div className={styles.ctaButtons}>
+                <Button 
+                  as={Link} 
+                  href="/book" 
+                  variant="outline-light" 
+                  size="lg"
+                  className={styles.ctaButton}
+                >
+                  Book Spa
+                </Button>
+              </div>
+            </Carousel.Caption>
+          </Carousel.Item>
+
+          <Carousel.Item className={styles.carouselItemFull}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src={hero3}
+                alt="Resort Interior"
+                fill
+                className={styles.carouselImage}
+              />
+            </div>
+            <Carousel.Caption className={styles.heroCaption}>
+              <h1>EXCLUSIVE OFFERS</h1>
+              <p>Limited time summer specials</p>
+              <div className={styles.ctaButtons}>
+                <Button 
+                  as={Link} 
+                  href="/book" 
+                  variant="outline-light" 
+                  size="lg"
+                  className={styles.ctaButton}
+                >
+                  View Offers
+                </Button>
+              </div>
+            </Carousel.Caption>
+          </Carousel.Item>
         </Carousel>
       </div>
 
@@ -118,7 +158,6 @@ export default function Home() {
                   alt="Belle Vue Resort"
                   fill
                   className={styles.welcomeImage}
-                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>
@@ -144,99 +183,103 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Rooms Section */}
-      <section className={styles.roomsSection}>
-        <Container className="py-md-5">
-          <div className="text-center mb-5">
-            <h2 className={styles.sectionTitle}>ACCOMMODATIONS</h2>
-            <div className={styles.divider}></div>
-            <p className={styles.sectionSubtitle}>
-              Each of our accommodations has been thoughtfully designed to provide the ultimate in comfort and style.
-            </p>
-          </div>
-          
-          <div className="row g-4">
-            {roomTypes.map((room, index) => (
-              <div key={index} className="col-md-4">
-                <div className={`card h-100 border-0 bg-transparent ${styles.roomCard}`}>
-                  <div className={styles.roomImageContainer}>
-                    <Image 
-                      src={galleryImages[index % galleryImages.length]} 
-                      alt={room.name}
-                      fill
-                      className={styles.roomImage}
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                    {room.highlight && (
-                      <div className={styles.highlightBadge}>
-                        <span>{room.highlight}</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="card-body px-0 text-center">
-                    <h5 className={styles.roomTitle}>
-                      {room.name.toUpperCase()}
-                    </h5>
-                    <p className={styles.roomDescription}>
-                      {room.description}
-                    </p>
-                    <div className="d-flex flex-column align-items-center">
-                      <span className={styles.roomPrice}>
-                        From <strong>${room.price}</strong> / night
-                      </span>
-                      <Button 
-                        as={Link} 
-                        href="/book" 
-                        variant="outline-dark"
-                        className={styles.bookButton}
-                      >
-                        BOOK NOW
-                      </Button>
-                    </div>
-                  </div>
+  {/* Rooms Section */}
+<section className={styles.roomsSection}>
+  <Container className="py-md-5">
+    <div className="text-center mb-5">
+      <h2 className={styles.sectionTitle}>ACCOMMODATIONS</h2>
+      <div className={styles.divider}></div>
+      <p className={styles.sectionSubtitle}>
+        Each of our accommodations has been thoughtfully designed to provide the ultimate in comfort and style.
+      </p>
+    </div>
+    
+    <div className="row g-4">
+      {roomTypes.map((room, index) => (
+        <div key={index} className="col-md-4 d-flex">
+          <div className={`card h-100 border-0 bg-transparent ${styles.roomCard}`}>
+            <div className={styles.roomImageContainer}>
+              <Image 
+                src={galleryImages[index % galleryImages.length]} 
+                alt={room.name}
+                fill
+                className={styles.roomImage}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              {room.highlight && (
+                <div className={styles.highlightBadge}>
+                  <span>{room.highlight}</span>
+                </div>
+              )}
+            </div>
+            <div className={`card-body px-0 text-center d-flex flex-column ${styles.roomCardBody}`}>
+              <h5 className={styles.roomTitle}>
+                {room.name.toUpperCase()}
+              </h5>
+              <p className={styles.roomDescription}>
+                {room.description}
+              </p>
+              <div className="mt-auto">
+                <div className="d-flex flex-column align-items-center">
+                  <span className={styles.roomPrice}>
+                    From <strong>${room.price}</strong> / night
+                  </span>
+                  <Button 
+                    as={Link} 
+                    href="/book" 
+                    variant="outline-dark"
+                    className={styles.bookButton}
+                  >
+                    BOOK NOW
+                  </Button>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
-        </Container>
-      </section>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>
 
-      {/* Gallery Section */}
-      <section className={styles.gallerySection}>
-        <Container className="py-md-5">
-          <div className="text-center mb-5">
-            <h2 className={styles.sectionTitle}>GALLERY</h2>
-            <div className={styles.divider}></div>
-            <p className={styles.sectionSubtitle}>
-              Explore the beauty of Belle Vue through our curated collection of images.
-            </p>
-          </div>
-          
-          <div className="row g-3">
-            {galleryImages.map((img, index) => (
-              <div key={index} className="col-6 col-md-4 col-lg-3">
-                <div 
-                  className={styles.galleryItem}
-                  onClick={() => openImageModal(img)}
-                >
-                  <Image 
-                    src={img} 
-                    alt={`Gallery ${index + 1}`}
-                    fill
-                    className={styles.galleryImage}
-                    sizes="(max-width: 768px) 50vw, 25vw"
-                  />
-                  <div className={styles.galleryOverlay}>
-                    <span className={styles.zoomIcon}>
-                      <i className="bi bi-zoom-in"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      {/* Gallery Carousel */}
+    {/* Gallery Carousel Section */}
+{/* Gallery Carousel Section */}
+<section className={styles.galleryCarouselSection}>
+  <Container className="py-md-5">
+    <div className="text-center mb-5">
+      <h2 className={styles.sectionTitle}>GALLERY</h2>
+      <div className={styles.divider}></div>
+      <p className={styles.sectionSubtitle}>
+        Explore the beauty of Belle Vue through our curated collection of images.
+      </p>
+    </div>
+    
+    <div className={styles.galleryCarouselWrapper}>
+      <Carousel 
+        fade 
+        interval={4000} 
+        indicators 
+        className={styles.galleryCarousel}
+      >
+        {galleryImages.map((img, index) => (
+          <Carousel.Item key={index} className={styles.galleryCarouselItem}>
+            <div className={styles.galleryImageContainer}>
+              <Image
+                src={img}
+                alt={`Gallery ${index + 1}`}
+                fill
+                className={styles.galleryImage}
+                sizes="(max-width: 768px) 100vw, 80vw"
+                priority={index < 3} // Preload first 3 images
+              />
+            </div>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </div>
+  </Container>
+</section>
 
       {/* Image Modal */}
       <Modal 
@@ -260,7 +303,6 @@ export default function Home() {
               alt="Enlarged view" 
               fill
               className={styles.modalImage}
-              sizes="90vw"
             />
           )}
         </Modal.Body>

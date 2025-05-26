@@ -1,10 +1,10 @@
 /* Base Styles */
-.container {
+.belleVueHome {
   overflow-x: hidden;
 }
 
-/* Carousel Styles */
-.carouselContainer {
+/* Hero Carousel */
+.fullWidthCarouselContainer {
   width: 100vw;
   position: relative;
   left: 50%;
@@ -15,22 +15,26 @@
   overflow: hidden;
 }
 
-.carousel {
+.heroCarousel {
   height: 100vh;
   min-height: 600px;
 }
 
-.carouselItem {
+.carouselItemFull {
   height: 100vh;
 }
 
-.carouselImage {
-  object-fit: cover;
+.imageWrapper {
+  position: relative;
   width: 100%;
   height: 100%;
 }
 
-.caption {
+.carouselImage {
+  object-fit: cover;
+}
+
+.heroCaption {
   bottom: 30%;
   text-align: left;
   left: 10%;
@@ -41,7 +45,7 @@
   backdrop-filter: blur(5px);
 }
 
-.captionTitle {
+.heroCaption h1 {
   font-size: 3.5rem;
   font-weight: 300;
   letter-spacing: 3px;
@@ -50,7 +54,7 @@
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-.captionText {
+.heroCaption p {
   font-size: 1.5rem;
   margin-bottom: 2rem;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
@@ -78,7 +82,7 @@
   padding: 3rem 0;
 }
 
-.gallerySection {
+.galleryCarouselSection {
   background-color: #f8f5f2;
   padding: 3rem 0;
 }
@@ -118,13 +122,12 @@
 
 /* Welcome Section */
 .welcomeImageContainer {
+  position: relative;
   width: 100%;
   height: 400px;
 }
 
 .welcomeImage {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
@@ -147,6 +150,18 @@
 .roomCard {
   transition: transform 0.3s ease;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.roomDescription {
+  flex-grow: 1;
 }
 
 .roomCard:hover {
@@ -156,12 +171,9 @@
 .roomImageContainer {
   position: relative;
   height: 300px;
-  overflow: hidden;
 }
 
 .roomImage {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
@@ -216,47 +228,18 @@
   font-weight: 300;
 }
 
-/* Gallery Section */
-.galleryItem {
-  cursor: pointer;
-  overflow: hidden;
-  height: 250px;
+/* Gallery Carousel */
+.galleryCarousel {
+  margin: 2rem 0;
+}
+
+.galleryCarouselItem {
   position: relative;
-  transition: transform 0.3s ease;
+  height: 500px;
 }
 
-.galleryImage {
-  width: 100%;
-  height: 100%;
+.galleryCarouselImage {
   object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.galleryItem:hover .galleryImage {
-  transform: scale(1.05);
-}
-
-.galleryOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.3);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.galleryItem:hover .galleryOverlay {
-  opacity: 1;
-}
-
-.zoomIcon {
-  color: white;
-  font-size: 1.5rem;
 }
 
 /* Modal Styles */
@@ -278,31 +261,27 @@
 }
 
 .modalBody {
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   min-height: 80vh;
 }
 
 .modalImage {
-  max-height: 90vh;
-  max-width: 100%;
+  object-fit: contain;
 }
 
 /* Responsive Styles */
 @media (max-width: 992px) {
-  .caption {
+  .heroCaption {
     bottom: 20%;
     left: 5%;
     right: 5%;
   }
   
-  .captionTitle {
+  .heroCaption h1 {
     font-size: 2rem;
   }
   
-  .captionText {
+  .heroCaption p {
     font-size: 1.2rem;
   }
   
@@ -311,9 +290,8 @@
     gap: 0.5rem;
   }
   
-  .ctaButton {
-    min-width: 140px;
-    padding: 10px 20px;
+  .galleryCarouselItem {
+    height: 400px;
   }
 }
 
@@ -342,22 +320,128 @@
     font-size: 0.9rem;
   }
   
-  .galleryItem {
-    height: 200px;
+  .galleryCarouselItem {
+    height: 300px;
+  }
+  
+  .heroCaption h1 {
+    font-size: 1.8rem;
+  }
+  
+  .heroCaption p {
+    font-size: 1rem;
+  }
+  
+  .ctaButton {
+    min-width: 140px;
+    padding: 10px 20px;
   }
 }
 
-/* Add these to your existing styles */
-.imageWrapper {
+/* Gallery Carousel Styles */
+.galleryCarousel {
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.galleryCarouselItem {
+  position: relative;
+  height: 60vh;
+  min-height: 500px;
+  width: 100%;
+}
+
+.galleryCarouselImage {
+  object-fit: cover;
+}
+
+.galleryCaption {
+  bottom: 20%;
+  text-align: center;
+}
+
+.zoomButton {
+  background: rgba(255,255,255,0.8);
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 500;
+}
+
+.zoomButton:hover {
+  background: white;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .galleryCarouselItem {
+    height: 50vh;
+    min-height: 400px;
+  }
+  
+  .galleryCaption {
+    bottom: 10%;
+  }
+}
+
+/* Gallery Carousel Fixes */
+.galleryCarouselWrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.galleryCarousel {
+  width: 100%;
+  height: 60vh;
+  min-height: 500px;
+}
+
+.galleryCarouselItem {
+  width: 100%;
+  height: 100%;
+}
+
+.galleryImageContainer {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.welcomeImageContainer {
-  position: relative;
-  width: 100%;
-  height: 400px;
+.galleryImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Room Card Fixes */
+.roomCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.roomCardBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.roomDescription {
+  flex-grow: 1;
 }
 
 .roomImageContainer {
@@ -365,12 +449,7 @@
   height: 300px;
 }
 
-.galleryItem {
-  position: relative;
-  height: 250px;
-}
-
-.modalBody {
-  position: relative;
-  min-height: 80vh;
+.roomImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
