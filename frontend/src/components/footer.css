@@ -1,0 +1,220 @@
+/* Footer Base */
+.belle-vue-footer {
+  background-color: #ecdbac; /* Light gold background */
+  color: #5a4a42;
+  padding: 60px 0 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* Brand Section */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hotel-icon {
+  color: #c8a97e;
+  font-size: 2rem;
+  margin-right: 10px;
+}
+
+.brand-name {
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #5a4a42;
+  font-size: 1.5rem;
+}
+
+.footer-tagline {
+  margin-bottom: 25px;
+  line-height: 1.6;
+  color: #7a6b62;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  color: #c8a97e;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #5a4a42;
+}
+
+/* Links Section */
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.footer-title {
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #5a4a42;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 1px;
+  background-color: #c8a97e;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #7a6b62;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.footer-links a:hover {
+  color: #c8a97e;
+}
+
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #c8a97e;
+  transition: width 0.3s ease;
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+/* Newsletter Section */
+.footer-newsletter {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-newsletter p {
+  margin-bottom: 20px;
+  color: #7a6b62;
+  line-height: 1.6;
+}
+
+.newsletter-form {
+  position: relative;
+  display: flex;
+}
+
+.newsletter-form input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  background-color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  color: #5a4a42;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.newsletter-form input:focus {
+  border-color: #c8a97e;
+  box-shadow: 0 0 0 1px #c8a97e;
+}
+
+.newsletter-form button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  border: none;
+  color: #c8a97e;
+  padding: 0 15px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  color: #5a4a42;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  border-top: 1px solid rgba(90, 74, 66, 0.1);
+  padding: 20px 0;
+  text-align: center;
+  color: #7a6b62;
+  font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-brand {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-logo {
+    justify-content: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  .footer-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,376 @@
+/* Base Styles */
+.container {
+  overflow-x: hidden;
+}
+
+/* Carousel Styles */
+.carouselContainer {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: -20px;
+  overflow: hidden;
+}
+
+.carousel {
+  height: 100vh;
+  min-height: 600px;
+}
+
+.carouselItem {
+  height: 100vh;
+}
+
+.carouselImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.caption {
+  bottom: 30%;
+  text-align: left;
+  left: 10%;
+  right: 40%;
+  background: rgba(0,0,0,0.3);
+  padding: 2rem;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+}
+
+.captionTitle {
+  font-size: 3.5rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.captionText {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.ctaButton {
+  min-width: 180px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+}
+
+/* Section Styles */
+.welcomeSection {
+  background-color: #f8f5f2;
+  padding: 3rem 0;
+}
+
+.roomsSection {
+  background-color: #fff;
+  padding: 3rem 0;
+}
+
+.gallerySection {
+  background-color: #f8f5f2;
+  padding: 3rem 0;
+}
+
+.sectionTitle {
+  color: #333;
+  letter-spacing: 1px;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+  font-size: 2.5rem;
+}
+
+.sectionTitle::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #c8a97e;
+  margin: 15px auto;
+}
+
+.sectionSubtitle {
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+.divider {
+  width: 80px;
+  height: 2px;
+  background-color: #333;
+  margin: 20px auto;
+}
+
+/* Welcome Section */
+.welcomeImageContainer {
+  width: 100%;
+  height: 400px;
+}
+
+.welcomeImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.welcomeText {
+  color: #666;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.discoverButton {
+  border-radius: 0;
+  border-width: 2px;
+  padding: 10px 30px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+/* Rooms Section */
+.roomCard {
+  transition: transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.roomCard:hover {
+  transform: translateY(-5px);
+}
+
+.roomImageContainer {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.roomImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.roomCard:hover .roomImage {
+  transform: scale(1.05);
+}
+
+.highlightBadge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #c8a97e;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.roomTitle {
+  color: #333;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.roomDescription {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  min-height: 80px;
+}
+
+.roomPrice {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.roomPrice strong {
+  font-weight: 500;
+  color: #c8a97e;
+}
+
+.bookButton {
+  border-radius: 0;
+  border-width: 2px;
+  padding: 8px 30px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+/* Gallery Section */
+.galleryItem {
+  cursor: pointer;
+  overflow: hidden;
+  height: 250px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.galleryItem:hover .galleryImage {
+  transform: scale(1.05);
+}
+
+.galleryOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.galleryItem:hover .galleryOverlay {
+  opacity: 1;
+}
+
+.zoomIcon {
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* Modal Styles */
+.galleryModal {
+  max-width: 90vw;
+}
+
+.modalHeader {
+  border: none;
+}
+
+.closeButton {
+  filter: invert(1);
+  font-size: 1.5rem;
+  padding: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modalBody {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.modalImage {
+  max-height: 90vh;
+  max-width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .caption {
+    bottom: 20%;
+    left: 5%;
+    right: 5%;
+  }
+  
+  .captionTitle {
+    font-size: 2rem;
+  }
+  
+  .captionText {
+    font-size: 1.2rem;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .ctaButton {
+    min-width: 140px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .welcomeImageContainer {
+    height: 300px;
+  }
+  
+  .welcomeText {
+    font-size: 1rem;
+  }
+  
+  .roomImageContainer {
+    height: 200px;
+  }
+  
+  .roomTitle {
+    font-size: 1.3rem;
+  }
+  
+  .roomDescription {
+    font-size: 0.9rem;
+  }
+  
+  .galleryItem {
+    height: 200px;
+  }
+}
+
+/* Add these to your existing styles */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.welcomeImageContainer {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.roomImageContainer {
+  position: relative;
+  height: 300px;
+}
+
+.galleryItem {
+  position: relative;
+  height: 250px;
+}
+
+.modalBody {
+  position: relative;
+  min-height: 80vh;
+}
