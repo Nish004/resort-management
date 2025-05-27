@@ -114,15 +114,18 @@ export default function Home() {
             </Carousel.Caption>
           </Carousel.Item>
 
-          <Carousel.Item className={styles.carouselItemFull}>
-            <div className={styles.imageWrapper}>
-              <Image
-                src={hero3}
-                alt="Resort Interior"
-                fill
-                className={styles.carouselImage}
-              />
-            </div>
+<Carousel.Item className={styles.carouselItemFull}>
+  <div className={styles.imageWrapper}>
+    <Image
+      src={hero3}
+      alt="Resort Interior"
+      fill
+      className={`${styles.carouselImage} ${styles.thirdImageZoom}`} // Added special class
+      style={{
+        objectPosition: "center center" // Force center alignment
+      }}
+    />
+  </div>
             <Carousel.Caption className={styles.heroCaption}>
               <h1>EXCLUSIVE OFFERS</h1>
               <p>Limited time summer specials</p>
