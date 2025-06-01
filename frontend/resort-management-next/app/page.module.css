@@ -29,7 +29,7 @@
 }
 
 .imageWrapper {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
   width: 100%;
@@ -435,8 +435,10 @@
 }
 
 .galleryImage {
-  object-fit: cover;
+  position: static !important; 
+  object-fit: fill;
   object-position: center;
+  margin-top: 140px;
 }
 
 /* Room Card Fixes */

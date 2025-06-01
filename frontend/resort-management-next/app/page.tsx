@@ -269,6 +269,7 @@ export default function Home() {
           <Carousel.Item key={index} className={styles.galleryCarouselItem}>
             <div className={styles.galleryImageContainer}>
               <Image
+                
                 src={img}
                 alt={`Gallery ${index + 1}`}
                 fill
