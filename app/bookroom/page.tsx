@@ -1,6 +1,7 @@
 'use client';
-import { useState } from 'react';
-import { Container, Card, Button, Row, Col, Modal, Form } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { Container, Card, Button, Row, Col, Modal } from 'react-bootstrap';
 import Image from 'next/image';
 import styles from './bookroom.module.css';
 
@@ -38,6 +39,15 @@ const rooms = [
 export default function BookRoomPage() {
   const [showModal, setShowModal] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState<any>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    // Check if user logged in, else redirect to /login
+    const username = localStorage.getItem('username');
+    if (!username) {
+      router.push('/login');
+    }
+  }, [router]);
 
   const handleBookClick = (room: any) => {
     setSelectedRoom(room);
@@ -49,8 +59,12 @@ export default function BookRoomPage() {
     setSelectedRoom(null);
   };
 
+  const handleConfirm = () => {
+    router.push('/booking/details');
+  };
+
   return (
-    <Container className="py-5">
+    <Container className="py-5 mt-5" style={{ paddingTop: '100px' }}>
       <h2 className="text-center mb-4">Book Your Stay</h2>
       <Row className="g-4">
         {rooms.map((room) => (
@@ -80,61 +94,27 @@ export default function BookRoomPage() {
         ))}
       </Row>
 
-      {/* Booking Modal */}
       <Modal show={showModal} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Book {selectedRoom?.name}</Modal.Title>
+          <Modal.Title>Confirm Room</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-  <Form>
-    <Form.Group className="mb-3">
-      <Form.Label>Your Name</Form.Label>
-      <Form.Control type="text" placeholder="Enter your name" />
-    </Form.Group>
-
-    <Row className="mb-3">
-      <Col>
-        <Form.Label>Check-in Date</Form.Label>
-        <Form.Control type="date" />
-      </Col>
-      <Col>
-        <Form.Label>Check-out Date</Form.Label>
-        <Form.Control type="date" />
-      </Col>
-    </Row>
-
-    <Row className="mb-3">
-      <Col>
-        <Form.Label>Check-in Time</Form.Label>
-        <Form.Control type="time" />
-      </Col>
-      <Col>
-        <Form.Label>Check-out Time</Form.Label>
-        <Form.Control type="time" />
-      </Col>
-    </Row>
-
-    <Form.Group className="mb-3">
-      <Form.Label>Guests</Form.Label>
-      <Form.Control type="number" placeholder="e.g. 2" min={1} />
-    </Form.Group>
-
-    {/* Simulated Availability */}
-    {selectedRoom && (
-      <div className="mb-3">
-        <strong>Availability:</strong>{" "}
-        <span className={Math.random() > 0.3 ? "text-success" : "text-danger"}>
-          {Math.random() > 0.3 ? "Available" : "Partially Booked"}
-        </span>
-      </div>
-    )}
-
-    <Button variant="dark" onClick={handleClose}>
-      Confirm Booking
-    </Button>
-  </Form>
-</Modal.Body>
-
+          {selectedRoom && (
+            <>
+              <h5>{selectedRoom.name}</h5>
+              <p>{selectedRoom.description}</p>
+              <p><strong>${selectedRoom.price}</strong> per night</p>
+            </>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="dark" onClick={handleConfirm}>
+            Continue to Details
+          </Button>
+        </Modal.Footer>
       </Modal>
     </Container>
   );

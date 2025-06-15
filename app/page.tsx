@@ -23,6 +23,25 @@ const galleryImages = [
   '/assets/Gallery11.jfif'
 ];
 
+const cuisineImages = [
+   '/assets/cusines/cusine1.jpg',
+   '/assets/cusines/cusine2.jpg',
+   '/assets/cusines/cusine3.jpg',
+   '/assets/cusines/cusine4.jpg',
+   '/assets/cusines/cusine5.jpg',
+   '/assets/cusines/cusine6.jpg',
+   '/assets/cusines/cusine7.jpg',
+   '/assets/cusines/cusine8.jpg',
+   '/assets/cusines/cusine9.jpg',
+   '/assets/cusines/cusine10.jpg',
+   '/assets/cusines/cusine11.jpg',
+   '/assets/cusines/cusine12.jpg',
+   '/assets/cusines/cusine13.jpg',
+   '/assets/cusines/cusine14.jpg',
+   '/assets/cusines/cusine15.jpg'
+]
+
+
 const roomTypes = [
   {
     id: 'luxury_villa',
@@ -46,6 +65,8 @@ const roomTypes = [
     highlight: "Best Value"
   }
 ];
+
+
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -245,6 +266,45 @@ export default function Home() {
   </Container>
 </section>
 
+{/* Cuisines Carousel Section */}
+<section className={styles.galleryCarouselSection}>
+<Container className="py-md-5">
+<div className="text-center mb-5">
+<h2 className={styles.sectionTitle}>CUISINES</h2>
+<div className={styles.divider}></div>
+<p className={styles.sectionSubtitle}>
+Indulge in a rich variety of cuisines crafted by our world-class chefs.
+</p>
+</div>
+
+<div className={styles.galleryCarouselWrapper}>
+<Carousel
+fade
+interval={4000}
+indicators
+className={styles.galleryCarousel}
+>
+{cuisineImages.map((img, index) => (
+<Carousel.Item key={index} className={styles.galleryCarouselItem}>
+<div className={styles.galleryImageContainer}>
+<Image
+
+src={img}
+alt={`Cuisine ${index + 1}`}
+fill
+className={styles.galleryImage}
+sizes="(max-width: 768px) 100vw, 80vw"
+priority={index < 3}
+/>
+</div>
+</Carousel.Item>
+))}
+</Carousel>
+</div>
+</Container>
+</section>
+
+
       {/* Gallery Carousel */}
     {/* Gallery Carousel Section */}
 {/* Gallery Carousel Section */}
@@ -285,6 +345,9 @@ export default function Home() {
   </Container>
 </section>
 
+
+
+
       {/* Image Modal */}
       <Modal 
         show={showModal} 
@@ -307,10 +370,14 @@ export default function Home() {
               alt="Enlarged view" 
               fill
               className={styles.modalImage}
+              style={{ objectFit: 'contain' }}
             />
           )}
         </Modal.Body>
       </Modal>
     </div>
+    
+    
+    
   );
 }
